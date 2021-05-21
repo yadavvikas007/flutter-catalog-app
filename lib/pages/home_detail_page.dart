@@ -12,8 +12,10 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.transparent),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -21,23 +23,18 @@ class HomeDetailsPage extends StatelessWidget {
             "\$${catalog.price}".text.bold.red800.xl4.make(),
             ElevatedButton(
               onPressed: () {},
-              child: "Buy".text.make(),
+              child: "Add to cart".text.make(),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  MyTheme.darkBluishColor,
-                ),
+                backgroundColor:
+                    MaterialStateProperty.all(context.theme.buttonColor),
                 shape: MaterialStateProperty.all(
                   StadiumBorder(),
                 ),
               ),
-            ).wh(100, 50)
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
-      backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -53,16 +50,22 @@ class HomeDetailsPage extends StatelessWidget {
                 edge: VxEdge.TOP,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child: Column(
                     children: [
                       catalog.name.text.bold.xl4
-                          .color(MyTheme.darkBluishColor)
+                          .color(context.accentColor)
                           .make(),
                       catalog.desc.text
                           .textStyle(context.captionStyle)
                           .xl
                           .make(),
+                      10.heightBox,
+                      "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. "
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16()
                     ],
                   ).py64(),
                 ),
