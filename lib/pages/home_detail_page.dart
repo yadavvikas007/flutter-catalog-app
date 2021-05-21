@@ -34,7 +34,9 @@ class HomeDetailsPage extends StatelessWidget {
           ],
         ).p32(),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         bottom: false,
@@ -54,7 +56,7 @@ class HomeDetailsPage extends StatelessWidget {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      catalog.name.text.bold.lg
+                      catalog.name.text.bold.xl4
                           .color(MyTheme.darkBluishColor)
                           .make(),
                       catalog.desc.text

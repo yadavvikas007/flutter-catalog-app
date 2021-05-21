@@ -11,6 +11,7 @@ class CatalogItem extends StatelessWidget {
   const CatalogItem({Key key, @required this.catalog})
       : assert(catalog != null),
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return VxBox(
@@ -18,38 +19,41 @@ class CatalogItem extends StatelessWidget {
         children: [
           Hero(
             tag: Key(catalog.id.toString()),
-            child: CatalogImage(image: catalog.image),
+            child: CatalogImage(
+              image: catalog.image,
+            ),
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                catalog.name.text.bold.lg.color(MyTheme.darkBluishColor).make(),
-                catalog.desc.text.textStyle(context.captionStyle).make(),
-                10.heightBox,
-                ButtonBar(
-                  alignment: MainAxisAlignment.spaceBetween,
-                  buttonPadding: EdgeInsets.zero,
-                  children: [
-                    "\$${catalog.price}".text.bold.xl.make(),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: "Buy".text.make(),
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor),
-                        shape: MaterialStateProperty.all(StadiumBorder()),
-                      ),
-                    )
-                  ],
-                ).pOnly(right: 16)
-              ],
-            ),
-          )
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
+              catalog.desc.text.textStyle(context.captionStyle).make(),
+              10.heightBox,
+              ButtonBar(
+                alignment: MainAxisAlignment.spaceBetween,
+                buttonPadding: EdgeInsets.zero,
+                children: [
+                  "\$${catalog.price}".text.bold.xl.make(),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          MyTheme.darkBluishColor,
+                        ),
+                        shape: MaterialStateProperty.all(
+                          StadiumBorder(),
+                        )),
+                    child: "Add to cart".text.make(),
+                  )
+                ],
+              ).pOnly(right: 8.0)
+            ],
+          ))
         ],
       ),
-    ).white.roundedLg.square(150).make().py16();
+    ).white.rounded.square(150).make().py16();
   }
 }
 
@@ -63,7 +67,6 @@ class CatalogImage extends StatelessWidget {
         .box
         .rounded
         .p8
-        .p16
         .color(MyTheme.creamColor)
         .make()
         .p16()
@@ -75,6 +78,7 @@ class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
