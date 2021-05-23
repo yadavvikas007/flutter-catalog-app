@@ -1,16 +1,12 @@
 # flutter_catalog
 
-A new Flutter project.
+My first flutter  project 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+------:HERE ARE SOME SCREENSHOTS FROM THE FINAL APP - BOTH IN LIGHT AND DARK THEME MODE:------
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="assets/images/login_bright.png" width="300" height="700">   <img src="assets/images/login_dark.png" width="300" height="700">
+<img src="assets/images/home_bright.png" width="300" height="700">   <img src="assets/images/home_dark.png" width="300" height="700">
+<img src="assets/images/item_desc_bright.png" width="300" height="700">   <img src="assets/images/item_desc_dark.png" width="300" height="700">
+<img src="assets/images/cart_dark.png" width="300" height="700">   <img src="assets/images/cart_bright.png" width="300" height="700">
