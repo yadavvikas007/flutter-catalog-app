@@ -34,6 +34,7 @@ class _CartTotal extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           VxBuilder(
+            //to reflect changes for remove mutations in price
             builder: (context, _) {
               return "\$${_cart.totalPrice}"
                   .text

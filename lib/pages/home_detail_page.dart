@@ -34,6 +34,7 @@ class HomeDetailsPage extends StatelessWidget {
         child: Column(
           children: [
             Hero(
+              //do a hero animation if tag maches, for the image between pre and curr page
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
             ).h32(context),

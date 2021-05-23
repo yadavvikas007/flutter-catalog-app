@@ -9,17 +9,21 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String _name = "";
-  bool changeButton = false;
-  final _formKey = GlobalKey<FormState>();
+  bool changeButton =
+      false; //changing state of login button(animating the login button)
+  final _formKey =
+      GlobalKey<FormState>(); //State associated with a [Form] widget.
   moveToHome(BuildContext context) async {
     if (_formKey.currentState.validate()) {
+      //validate current entries
       setState(() {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoute.homeRoute);
       setState(() {
-        changeButton = false;
+        changeButton =
+            false; //for if we move back to login page , the login page is resetted
       });
     }
   }
@@ -69,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       onChanged: (value) {
                         _name = value;
                         setState(() {});
-                      },
+                      }, //simulateously update name in welcome text as we enter username
                     ),
                     TextFormField(
                       obscureText: true,
@@ -98,8 +102,10 @@ class _LoginPageState extends State<LoginPage> {
                         child: AnimatedContainer(
                           duration: Duration(seconds: 1),
                           alignment: Alignment.center,
+                          //for changing width of login button when changebutton is true
                           width: changeButton ? 50 : 150,
                           height: 50.0,
+                          //showing login text or done icon based on changebutton and animating the login button
                           child: changeButton
                               ? Icon(
                                   Icons.done,

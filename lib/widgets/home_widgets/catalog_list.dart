@@ -18,6 +18,8 @@ class CatalogItem extends StatelessWidget {
       child: Row(
         children: [
           Hero(
+            //f the tag of this hero matches the tag of a hero on a [PageRoute]
+            //that we're navigating to or from, then a hero animation will be triggered.
             tag: Key(catalog.id.toString()),
             child: CatalogImage(
               image: catalog.image,

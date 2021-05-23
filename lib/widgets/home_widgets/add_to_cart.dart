@@ -8,18 +8,18 @@ import 'package:velocity_x/velocity_x.dart';
 class AddToCart extends StatelessWidget {
   final Item catalog;
   AddToCart({Key key, this.catalog}) : super(key: key);
-  //final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     VxState.listen(context, to: [AddMutation, RemoveMutation]);
     final CartModel _cart = (VxState.store as MyStore).cart;
-
+    //if item already added in the cart
     bool isInCart = _cart.items.contains(catalog) ?? false;
     return ElevatedButton(
       onPressed: () {
         if (!isInCart) {
           AddMutation(catalog);
         }
+        //snackbar notification for added in cart
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: "Added to cart".text.color(Colors.white).make(),
@@ -35,6 +35,7 @@ class AddToCart extends StatelessWidget {
           shape: MaterialStateProperty.all(
             StadiumBorder(),
           )),
+      //if item added in cart icon changes
       child: isInCart ? Icon(Icons.done) : Icon(CupertinoIcons.cart_badge_plus),
     );
   }

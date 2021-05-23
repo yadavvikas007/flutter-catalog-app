@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  //Called when this object is inserted into the tree.
   void initState() {
     super.initState();
     loadData();
@@ -27,8 +28,8 @@ class _HomePageState extends State<HomePage> {
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
-    var productsData = decodedData["products"];
-    CatalogModel.items = List.from(productsData)
+    var productsData = decodedData["products"]; //products -> map
+    CatalogModel.items = List.from(productsData) //creating list of items
         .map<Item>((item) => Item.fromMap(item))
         .toList();
     setState(() {});
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //Vxstore -> The coordinating widget that keeps track of mutations and the notify the same to the listening widgets.
     final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
       backgroundColor: context.canvasColor,
@@ -48,14 +50,17 @@ class _HomePageState extends State<HomePage> {
               CatalogHeader(),
               if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                 CatalogList().p16().expand()
-              else
+              else //while data isnt loaded yet or still loading
                 CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
       ),
       floatingActionButton: VxBuilder(
-        mutations: {AddMutation, RemoveMutation},
+        mutations: {
+          AddMutation,
+          RemoveMutation
+        }, //updates when something added or removed from cart
         builder: (context, _) => FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
           child: Icon(
